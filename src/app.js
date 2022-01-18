@@ -27,6 +27,20 @@ let dateElement = document.querySelector("#date");
 let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);
 
+function showTemperature(response) {
+  document.querySelector("h1").innerHTML = response.data.name;
+  document.querySelector("#temperature").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#max-temp").innerHTML = Math.round(
+    response.data.main.temp_max
+  );
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+}
+
 function search(city) {
   let apikey = "2b57e8c8e53ab345628a7d30def85137";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`;
@@ -57,19 +71,5 @@ form.addEventListener("submit", handleSubmit);
 
 let currentLocation = document.querySelector("#current-location-btn");
 currentLocation.addEventListener("click", currentPosition);
-
-function showTemperature(response) {
-  document.querySelector("h1").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
-  document.querySelector("#max-temp").innerHTML = Math.round(
-    response.data.main.temp_max
-  );
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-}
 
 search("London");

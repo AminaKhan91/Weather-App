@@ -24,11 +24,10 @@ p {
 }
 
 footer {
-  display: block;
-  text-align: center;
   color: black;
   font-family: "Be Vietnam Pro", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
+  margin-left: 23px;
 }
 
 .search {
